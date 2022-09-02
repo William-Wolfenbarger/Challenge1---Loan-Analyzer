@@ -90,15 +90,20 @@ print(inexpensive_loans)
 
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
 
-csvpath = Path("inexpensive_loans.csv")
-with open(csvpath, 'w', newline='') as csvfile:
-    csvwriter = csv.writer(csvfile)
-    for row in inexpensive_loans:
+output_path = Path("inexpensive_loans.csv")
+
+
+with open(output_path, "w") as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=",")
+    csvwriter.writerow(header)
+    for loan in inexpensive_loans:
         csvwriter.writerow(loan.values())
 
-csvwriter.writerow(header)
 
-output_path = Path("inexpensive_loans.csv")
+
+
+
+
 
 
 
