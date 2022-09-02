@@ -7,14 +7,19 @@ from pathlib import Path
 
 loan_costs = [500, 600, 200, 1000, 450]
 
+
+##count outstanding loans
 number_of_loans = len(loan_costs)
 print("There total number of outstanding loans is: ", number_of_loans)
 
+##generate total loan value
 total_loan_cost = sum(loan_costs)
 print("The total value of all loans in $ is: ", total_loan_cost)
 
+##find average loan cost
 average_loan_cost = total_loan_cost / number_of_loans
 print("The average loan cost is: ", average_loan_cost)
+
 
 loan = {
     "loan_price": 500,
@@ -23,13 +28,16 @@ loan = {
     "future_value": 1000,
 }
 
+##set and print variables
 future_value = loan.get("future_value")
 remaining_months = loan.get("remaining_months")
 print(f"The future value of the loan is ${future_value: .2f}.")
 print(f"The remaining months left on the loan are {remaining_months}.")
 
+##required return = 20%
 dicount_rate = 0.2
 
+#set up fair value variable using Present Value and if else decision making tree
 fair_value = future_value / (1 + (dicount_rate / 12)) ** remaining_months
 print(f"The fair value of the loan is ${fair_value: .2f}.")
 
@@ -45,10 +53,12 @@ new_loan = {
     "future_value": 1000,
 }
 
+#set up price this loan function
 def price_this_loan(future_value, remaining_months, annual_discount_rate):
     present_value = future_value / (1 + (annual_discount_rate)) ** remaining_months
     return present_value
 
+#find present value of loans
 present_value = price_this_loan(1000, 12, 0.2)
 print(f"The present value of the loan is: {present_value: .2f}")
 
@@ -79,6 +89,7 @@ loans = [
     },
 ]
 
+##set-up inexpensive loans list to hold our inexpensive loans after using a for loop to iterate thru and evaluate our loan data
 inexpensive_loans = []
 
 for row in loans:
@@ -86,8 +97,10 @@ for row in loans:
     if price <= 500:
         inexpensive_loans.append(row)
 
+##print list
 print(inexpensive_loans)
 
+##produce solution in a CSV file
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
 
 output_path = Path("inexpensive_loans.csv")
