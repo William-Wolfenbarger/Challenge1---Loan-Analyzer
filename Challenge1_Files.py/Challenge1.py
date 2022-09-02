@@ -1,12 +1,8 @@
 
 
-from tkinter.tix import COLUMN
 
 import csv
 from pathlib import Path
-
-from Python_Project.Python_functions import average_numbers
-
 
 
 loan_costs = [500, 600, 200, 1000, 450]
@@ -93,7 +89,6 @@ for row in loans:
 print(inexpensive_loans)
 
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
-
 
 csvpath = Path("inexpensive_loans.csv")
 with open(csvpath, 'w', newline='') as csvfile:
